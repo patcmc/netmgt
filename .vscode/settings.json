@@ -21,23 +21,28 @@
     "editor.formatOnSave": true
   },
   "[ruby]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "rebornix.Ruby"
+    "editor.defaultFormatter": "Shopify.ruby-lsp", 
+    "editor.formatOnSave": true
   },
   "[html]": {
     "editor.formatOnSave": true
   },
 
-  // Rubocop configuration
-  "ruby.useLanguageServer": true,
-  "ruby.lint": {
-    "rubocop": true
+  "rubyLsp.enabledFeatures": {
+    "codeActions": true,
+    "diagnostics": true,
+    "documentHighlights": true,
+    "documentLink": true,
+    "documentSymbols": true,
+    "foldingRanges": true,
+    "formatting": true,
+    "hover": true,
+    "inlayHint": true,
+    "onTypeFormatting": true,
+    "selectionRanges": true,
+    "semanticHighlighting": true,
+    "completion": true,
+    "codeLens": true
   },
-  "ruby.format": "rubocop",
-  "ruby.formatOnSave": true,
-  "ruby.intellisense": "rubyLocate",
-
-  // Custom Rubocop command for project-specific configuration
-  "ruby.rubocop.executePath": "bundle",
-  "ruby.rubocop.onSave": true
+  "rubyLsp.formatter": "rubocop"
 }
