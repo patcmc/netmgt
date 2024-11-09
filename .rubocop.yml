@@ -1,0 +1,11 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+AllCops:
+  Exclude:
+    - '.git/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'coverage/**/*'
+    - 'tmp/**/*'
+    - 'log/**/*'

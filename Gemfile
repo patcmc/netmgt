@@ -59,8 +59,11 @@ end
 
 group :development do
   gem "solargraph"
-
   gem "erb_lint"
+
+  # RuboCop gems for linting and formatting
+  gem "rubocop", require: false
+  gem "rubocop-shopify", require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

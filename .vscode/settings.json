@@ -1,4 +1,43 @@
-"[erb]": {
-  "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
-  "editor.formatOnSave": true
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "files.associations": {
+    "*.erb": "erb",
+    "*.html.erb": "html",
+    "*.rb": "ruby"
+  },
+
+  // HTML and ERB settings
+  "emmet.includeLanguages": {
+    "erb": "html",
+    "html.erb": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+
+  // Format on save for specific languages
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  },
+  "[ruby]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rebornix.Ruby"
+  },
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+
+  // Rubocop configuration
+  "ruby.useLanguageServer": true,
+  "ruby.lint": {
+    "rubocop": true
+  },
+  "ruby.format": "rubocop",
+  "ruby.formatOnSave": true,
+  "ruby.intellisense": "rubyLocate",
+
+  // Custom Rubocop command for project-specific configuration
+  "ruby.rubocop.executePath": "bundle",
+  "ruby.rubocop.onSave": true
 }
