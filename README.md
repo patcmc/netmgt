@@ -2,43 +2,32 @@
 
 ## Overview
 
+NetMgt is a personal network management application designed to simplify and automate managing contacts, events, and interactions. It allowing you to effectively manage your personal network.
+
 ## Installation and Setup
 
-1. Clone the Repository
+1. **Clone the Repository**
 
-```
-git clone https://github.com/patcmc/netmgt.git
-cd netmgt
-```
+    ```bash
+    git clone https://github.com/patcmc/netmgt.git
+    cd netmgt
+    ```
 
-2. Generate SSL Certificates (Optional)
+2. **Run the Application**
 
-If you want to use HTTPS in local development, generate SSL certificates using mkcert:
+    Use Docker Compose to build and run the application:
 
-```
-mkdir certs
-mkcert -key-file certs/server.key -cert-file certs/server.crt netmgt.local
-```
+    ```bash
+    docker-compose up --build
+    ```
 
-3. Update Your Hosts File
+    Or use the Makefile commands:
 
-Add the following entry to your /etc/hosts file to map netmgt.local to 127.0.0.1:
+    ```bash
+    make setup
+    make start
+    ```
 
-```
-127.0.0.1 netmgt.local
-```
+3. **Access the Application**
 
-4. Run the Docker Containers
-
-Use docker-compose to build and run the containers:
-
-```
-docker-compose up --build
-```
-
-Or
-
-```
-make setup
-make start
-```
+    Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to access the application.
