@@ -9,3 +9,5 @@ AllCops:
     - 'coverage/**/*'
     - 'tmp/**/*'
     - 'log/**/*'
+    - 'Gemfile'
+    - 'config/**/*'
