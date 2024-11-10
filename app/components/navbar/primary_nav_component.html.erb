@@ -14,7 +14,7 @@
       >
     </a>
     <div class="flex items-center space-x-6 rtl:space-x-reverse">
-      <% if true %>
+      <% if user_signed_in? %>
         <%= render(Dropdown::UserMenuComponent.new) %>
       <% else %>
         <%= render(Button::LoginComponent.new) %>

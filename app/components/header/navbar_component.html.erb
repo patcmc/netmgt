@@ -1,2 +1,4 @@
 <%= render(Navbar::PrimaryNavComponent.new) %>
-<%= render(Navbar::SecondaryNavComponent.new) %>
+<% if user_signed_in? %>
+  <%= render(Navbar::SecondaryNavComponent.new) %>
+<% end %>
