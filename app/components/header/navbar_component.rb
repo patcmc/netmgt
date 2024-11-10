@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class Header::NavbarComponent < ViewComponent::Base
+module Header
+  class NavbarComponent < ViewComponent::Base
+  end
 end
