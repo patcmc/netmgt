@@ -17,12 +17,12 @@
       <%= render(HeaderComponent.new) %>
     </header>
 
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main>
       <%= yield %>
     </main>
 
     <footer>
-      <!-- Footer content goes here -->
+      <%= render(FooterComponent.new) %>
     </footer>
   </body>
 </html>
