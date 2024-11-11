@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  # Root route
+  root "home#index"
+
   # Devise routes for user authentication
   devise_for :users
 
-  # Root route
-  root "home#index"
+  get 'dashboard', to: 'dashboard#index'
 end
