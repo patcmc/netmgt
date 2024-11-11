@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Dropdown
-  class UserMenuComponent < ViewComponent::Base
+  class UserMenuComponent < BaseComponent
     def initialize(user: Current.user)
       super()
       @user = user

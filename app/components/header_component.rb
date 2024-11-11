@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-class HeaderComponent < ViewComponent::Base
+class HeaderComponent < BaseComponent
 end
