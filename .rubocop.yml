@@ -3,11 +3,12 @@ inherit_gem:
 
 AllCops:
   Exclude:
-    - '.git/**/*'
-    - 'bin/**/*'
-    - 'node_modules/**/*'
-    - 'coverage/**/*'
-    - 'tmp/**/*'
-    - 'log/**/*'
-    - 'Gemfile'
-    - 'config/**/*'
+    - ".git/**/*"
+    - "bin/**/*"
+    - "node_modules/**/*"
+    - "coverage/**/*"
+    - "tmp/**/*"
+    - "log/**/*"
+    - "Gemfile"
+    - "config/**/*"
+    - "db/schema.rb"
