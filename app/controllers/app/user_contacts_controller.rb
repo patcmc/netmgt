@@ -18,7 +18,7 @@ module App
     def create
       @user_contact = current_user.user_contacts.build(user_contact_params)
       if @user_contact.save
-        redirect_to(@user_contact, notice: "User contact was successfully created.")
+        redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully created.")
       else
         render(:new)
       end
@@ -28,7 +28,7 @@ module App
 
     def update
       if @user_contact.update(user_contact_params)
-        redirect_to(@user_contact, notice: "User contact was successfully updated.")
+        redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully updated.")
       else
         render(:edit)
       end
@@ -36,7 +36,7 @@ module App
 
     def destroy
       @user_contact.destroy
-      redirect_to(user_contacts_url, notice: "User contact was successfully destroyed.")
+      redirect_to(app_contacts_path, notice: "User contact was successfully destroyed.")
     end
 
     private
