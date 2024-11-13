@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # Devise routes for user authentication
   devise_for :users
 
-  get 'dashboard', to: 'dashboard#index'
-
-  resources :user_contacts
+  namespace :app do
+    root to: 'dashboard#index', as: :dashboard
+    resources :user_contacts, as: :contacts, path: 'contacts'
+  end
 end
