@@ -1,5 +1,5 @@
 import { Application } from "@hotwired/stimulus"
-import ContactModalController from "./contacts/modal_controller"
+import ContactModalController from "./contacts/contact_modal_controller"
 
 const application = Application.start()
 

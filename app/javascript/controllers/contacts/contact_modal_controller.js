@@ -9,7 +9,6 @@ export default class extends Controller {
 
   open() {
     console.log("open")
-    console.log(this)
     this.overlayTarget.classList.remove("hidden")
     this.modalTarget.classList.remove("hidden")
   }
