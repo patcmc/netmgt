@@ -1,25 +1,16 @@
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto p-4 min-h-screen">
   <%= render BreadcrumbComponent.new(links: [{ name: 'Home', path: '/' }, { name: 'App', path: '/app' }, { name: 'Contacts', path: nil }]) %>
+
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-bold">Contacts</h1>
     <a href="<%= new_app_contact_path %>" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded">
       Add Contact
     </a>
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-    <% @user_contacts.each do |contact| %>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2 text-center text-primary"><%= contact.name %></div>
-          <p class="text-gray-700 text-base mb-2">
-            <i class="fas fa-envelope mr-2 text-primary"></i>Email: <%= contact.email %>
-          </p>
-          <p class="text-gray-700 text-base">
-            <i class="fas fa-phone mr-2 text-primary"></i>Phone: <%= contact.phone %>
-          </p>
-        </div>
-      </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <% @user_contacts.each do |user_contact| %>
+      <%= render Card::UserContactComponent.new(user_contact: user_contact) %>
     <% end %>
   </div>
 </div>
-

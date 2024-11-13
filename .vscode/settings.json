@@ -5,6 +5,7 @@
   "files.associations": {
     "*.erb": "erb",
     "*.html.erb": "html",
+    "*.turbo_stream.erb": "html",
     "*.rb": "ruby"
   },
 
@@ -22,7 +23,7 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
   },
   "[ruby]": {
     "editor.defaultFormatter": "Shopify.ruby-lsp", 
