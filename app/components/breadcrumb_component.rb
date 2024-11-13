@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class BreadcrumbComponent < ViewComponent::Base
+class BreadcrumbComponent < BaseComponent
   def initialize(links:)
+    super()
     @links = links
   end
 end
