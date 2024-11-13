@@ -1,27 +1,67 @@
 <%= form_with model: @user_contact, url: @url, data: { turbo_frame:
 "user_contact_form", action: "turbo:submit-end->modal#handleSuccess" } do |form|
 %>
-<div class="mb-4">
-  <%= form.label :name, class: "block text-sm font-medium text-gray-700" %> <%=
-  form.text_field :name, class: "mt-1 block w-full shadow-sm sm:text-sm
-  border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
-</div>
-<div class="mb-4">
-  <%= form.label :email, class: "block text-sm font-medium text-gray-700" %> <%=
-  form.email_field :email, class: "mt-1 block w-full shadow-sm sm:text-sm
-  border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
-</div>
-<div class="mb-4">
-  <%= form.label :phone, class: "block text-sm font-medium text-gray-700" %> <%=
-  form.text_field :phone, class: "mt-1 block w-full shadow-sm sm:text-sm
-  border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
-</div>
-<div class="mb-4">
-  <%= form.label :tags, class: "block text-sm font-medium text-gray-700" %> <%=
-  form.select :tags, options_for_select([['Friend', 'friend'], ['Family',
-  'family'], ['Colleague', 'colleague']]), {}, class: "mt-1 block w-full
-  shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-primary
-  focus:border-primary" %>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+  <div class="mb-4 sm:col-span-1">
+    <%= form.label :avatar, "Avatar", class: "block text-sm font-medium
+    text-gray-700" %>
+    <div
+      class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+    >
+      <div class="space-y-1 text-center">
+        <svg
+          class="mx-auto h-12 w-12 text-gray-400"
+          stroke="currentColor"
+          fill="none"
+          viewBox="0 0 48 48"
+          aria-hidden="true"
+        >
+          <path
+            d="M28 8H20V16H8V28H16V36H28V28H36V16H28V8Z"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <div class="flex text-sm text-gray-600">
+          <label
+            for="file-upload"
+            class="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-primary-dark focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary"
+          >
+            <span>Upload a file</span>
+            <%= form.file_field :avatar, id: "file-upload", class: "sr-only" %>
+          </label>
+          <p class="pl-1">or drag and drop</p>
+        </div>
+        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+      </div>
+    </div>
+  </div>
+  <div class="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="mb-4">
+      <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :name, class: "mt-1 block w-full shadow-sm sm:text-sm
+      border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.email_field :email, class: "mt-1 block w-full shadow-sm
+      sm:text-sm border-gray-300 rounded-md focus:ring-primary
+      focus:border-primary" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :phone, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :phone, class: "mt-1 block w-full shadow-sm sm:text-sm
+      border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :tags, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.select :tags, options_for_select([['Friend', 'friend'],
+      ['Family', 'family'], ['Colleague', 'colleague']]), {}, class: "mt-1 block
+      w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-primary
+      focus:border-primary" %>
+    </div>
+  </div>
 </div>
 <div class="mb-4">
   <%= form.submit form.object.new_record? ? "Create Contact" : "Update Contact",
