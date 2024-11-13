@@ -1,0 +1,25 @@
+<div
+  id="overlay"
+  data-modal-target="overlay"
+  class="fixed inset-0 bg-black bg-opacity-50 hidden"
+></div>
+<div
+  id="modal"
+  data-modal-target="modal"
+  class="fixed inset-0 flex items-center justify-center hidden"
+>
+  <div class="bg-white p-6 rounded-lg shadow-lg relative">
+    <button
+      data-action="modal#close"
+      class="absolute top-0 right-0 m-4 text-gray-500 hover:text-gray-700 text-2xl font-bold"
+    >
+      &times;
+    </button>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg space-y-4">
+      <%= turbo_frame_tag "user_contact_form" do %> <%=
+      render(Form::UserContactComponent.new(user_contact: @user_contact, url:
+      app_contacts_path)) %> <% end %>
+    </div>
+  </div>
+</div>

@@ -1,21 +1,32 @@
-<%= form_with model: @user_contact, url: @url, local: true do |form| %>
-  <div class="mb-4">
-    <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :name, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
-  </div>
-  <div class="mb-4">
-    <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.email_field :email, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
-  </div>
-  <div class="mb-4">
-    <%= form.label :phone, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :phone, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
-  </div>
-  <div class="mb-4">
-    <%= form.label :tags, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.select :tags, options_for_select([['Friend', 'friend'], ['Family', 'family'], ['Colleague', 'colleague']]), {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
-  </div>
-  <div class="mb-4">
-    <%= form.submit form.object.new_record? ? "Create Contact" : "Update Contact", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" %>
-  </div>
+<%= form_with model: @user_contact, url: @url, data: { turbo_frame:
+"user_contact_form" } do |form| %>
+<div class="mb-4">
+  <%= form.label :name, class: "block text-sm font-medium text-gray-700" %> <%=
+  form.text_field :name, class: "mt-1 block w-full shadow-sm sm:text-sm
+  border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
+</div>
+<div class="mb-4">
+  <%= form.label :email, class: "block text-sm font-medium text-gray-700" %> <%=
+  form.email_field :email, class: "mt-1 block w-full shadow-sm sm:text-sm
+  border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
+</div>
+<div class="mb-4">
+  <%= form.label :phone, class: "block text-sm font-medium text-gray-700" %> <%=
+  form.text_field :phone, class: "mt-1 block w-full shadow-sm sm:text-sm
+  border-gray-300 rounded-md focus:ring-primary focus:border-primary" %>
+</div>
+<div class="mb-4">
+  <%= form.label :tags, class: "block text-sm font-medium text-gray-700" %> <%=
+  form.select :tags, options_for_select([['Friend', 'friend'], ['Family',
+  'family'], ['Colleague', 'colleague']]), {}, class: "mt-1 block w-full
+  shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-primary
+  focus:border-primary" %>
+</div>
+<div class="mb-4">
+  <%= form.submit form.object.new_record? ? "Create Contact" : "Update Contact",
+  class: "inline-flex justify-center py-2 px-4 border border-transparent
+  shadow-sm text-sm font-medium rounded-md text-white bg-primary
+  hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2
+  focus:ring-primary" %>
+</div>
 <% end %>

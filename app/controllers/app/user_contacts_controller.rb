@@ -7,6 +7,7 @@ module App
 
     def index
       @user_contacts = current_user.user_contacts
+      @user_contact = UserContact.new(user: current_user)
     end
 
     def show; end
@@ -18,7 +19,10 @@ module App
     def create
       @user_contact = current_user.user_contacts.build(user_contact_params)
       if @user_contact.save
-        redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully created.")
+        respond_to do |format|
+          format.html { redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully created.") }
+          format.turbo_stream { @user_contacts = current_user.user_contacts }
+        end
       else
         render(:new)
       end
