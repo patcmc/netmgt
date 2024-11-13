@@ -14,7 +14,7 @@
 
   <div
     id="user-contacts-list"
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
   >
     <% @user_contacts.each do |user_contact| %> <%=
     render(Card::UserContactComponent.new(user_contact: user_contact)) %> <% end

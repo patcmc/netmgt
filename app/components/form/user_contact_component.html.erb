@@ -1,5 +1,6 @@
 <%= form_with model: @user_contact, url: @url, data: { turbo_frame:
-"user_contact_form" } do |form| %>
+"user_contact_form", action: "turbo:submit-end->modal#handleSuccess" } do |form|
+%>
 <div class="mb-4">
   <%= form.label :name, class: "block text-sm font-medium text-gray-700" %> <%=
   form.text_field :name, class: "mt-1 block w-full shadow-sm sm:text-sm
