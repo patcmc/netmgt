@@ -9,6 +9,7 @@ export default class extends Controller {
 
   open() {
     console.log("open")
+    console.log(this)
     this.overlayTarget.classList.remove("hidden")
     this.modalTarget.classList.remove("hidden")
   }
@@ -19,7 +20,7 @@ export default class extends Controller {
     this.modalTarget.classList.add("hidden")
   }
 
-  handleSuccess(event) {
+  handleFormSubmission(event) {
     if (event.detail.success) {
       console.log("Form submitted successfully")
       this.close()

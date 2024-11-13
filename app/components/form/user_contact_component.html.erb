@@ -1,6 +1,6 @@
 <%= form_with model: @user_contact, url: @url, data: { turbo_frame:
-"user_contact_form", action: "turbo:submit-end->modal#handleSuccess" } do |form|
-%>
+"user_contact_form", action:
+"turbo:submit-end->contactModal#handleFormSubmission" } do |form| %>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
   <div class="mb-4 sm:col-span-1">
     <%= form.label :avatar, "Avatar", class: "block text-sm font-medium

@@ -6,8 +6,10 @@
     <h1 class="text-3xl font-bold">Add Contact</h1>
   </div>
 
-  <div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
-    <%= render Form::UserContactComponent.new(user_contact: @user_contact, url:
-    app_contacts_path) %>
+  <div class="inset-0 flex items-center justify-center">
+    <div class="mx-auto p-6 bg-white rounded-lg shadow-md">
+      <%= render Form::UserContactComponent.new(user_contact: @user_contact,
+      url: app_contacts_path) %>
+    </div>
   </div>
 </div>
