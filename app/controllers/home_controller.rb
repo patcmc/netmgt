@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class HomeController < ApplicationController
-  layout "landing"
-
+class HomeController < LandingController
   def index
   end
 end
