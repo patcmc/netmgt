@@ -21,7 +21,7 @@ module App
       if @user_contact.save
         respond_to do |format|
           format.html { redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully created.") }
-          format.turbo_stream { @user_contacts = current_user.user_contacts }
+          format.turbo_stream
         end
       else
         render(:new)
