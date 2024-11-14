@@ -1,0 +1,19 @@
+{
+  "tabWidth": 2,
+  "singleQuote": true,
+  "semi": false,
+  "trailingComma": "es5",
+  "printWidth": 100,
+  "overrides": [
+    {
+      "files": "*.html.erb",
+      "options": {
+        "parser": "html",
+        "tabWidth": 2,
+        "singleQuote": true,
+        "printWidth": 100,
+        "htmlWhitespaceSensitivity": "ignore"
+      }
+    }
+  ]
+}
