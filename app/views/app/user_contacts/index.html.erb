@@ -12,13 +12,12 @@
     </button>
   </div>
 
-  <%= turbo_stream_from "quotes" %>
+  <%= turbo_stream_from "user_contacts_#{Current.user.id}" %>
   <div
-    id="user-contacts-list"
+    id="user-contacts"
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
   >
-    <% @user_contacts.each do |user_contact| %> <%=
-    render(Card::UserContactComponent.new(user_contact: user_contact)) %> <% end %>
+    <%= render(Card::UserContactComponent.with_collection(@user_contacts)) %>
   </div>
 
   <%= render(Modal::UserContactComponent.new(user_contact: @user_contact, url: app_contacts_path))

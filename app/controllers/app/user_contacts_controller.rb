@@ -18,13 +18,14 @@ module App
 
     def create
       @user_contact = current_user.user_contacts.build(user_contact_params)
-      if @user_contact.save
-        respond_to do |format|
-          format.html { redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully created.") }
+
+      respond_to do |format|
+        if @user_contact.save
           format.turbo_stream
+          format.html { redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully created.") }
+        else
+          format.html { redirect_to(app_contact_path(@user_contact), notice: "User contact was not created.") }
         end
-      else
-        render(:new)
       end
     end
 
@@ -40,6 +41,7 @@ module App
 
     def destroy
       @user_contact.destroy
+
       redirect_to(app_contacts_path, notice: "User contact was successfully destroyed.")
     end
 

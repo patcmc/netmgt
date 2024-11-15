@@ -6,5 +6,9 @@ class UserContact < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  after_create_commit { broadcast_prepend_to "user_contacts" }
+  after_create_commit do
+    broadcast_append_to "user_contacts_#{user_id}",
+      target: "user-contacts",
+      html: Card::UserContactComponent.new(user_contact: self).render_in(ActionController::Base.new.view_context)
+  end
 end
