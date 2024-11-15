@@ -1,7 +1,59 @@
-# Task list
+# Development Logs
 
-- [x] Initialize project with Ruby on Rails 7.1.4.1
-- [x] Setup css-based with Tailwind
-- [x] Setup authentication with Devise
-- [x] Setup layout structure with Flowbite
-- [x] 
+- Project overview
+- Goals
+- Database structure
+- Tech stack
+  - Ruby on Rails 7.2
+  - SQLite
+  - Hotwire
+    - Turbo (Drive + Frame + Stream)
+    - Stimulus
+  - Tailwind
+    - Flowbite
+  - ViewComponent
+- Implement
+  - Setup Data-layer
+    - Create/update tables in database
+    - Create corresponding Model classes
+      - Consider to apply design pattern to reduce responsibility for the Model such as:
+        - Repository Pattern
+        - Data Mapper Pattern
+        - Query Object Pattern
+        - Service Pattern
+        - Factory Pattern
+        - Unit of Work Pattern
+        - Decorator Pattern
+        - Domain-Driven Design (DDD) Aggregates
+    - Init the core logic
+  - Setup Controller-layer & View-layer
+    - Pages
+      - Landing
+      - Application
+        - Unauthenticated
+        - Authenticated
+      - Mailer
+    - Apply Tailwind + Flowbite
+    - Apply ViewComponent
+      - Leverage the power of object orientation in programming languages ​
+        - Abstraction
+        - Inheritance
+        - Polymorphism
+        - Encapsulation
+      - How to use helper functions in ViewComponent?
+    - Apply Stimulus
+      - Difference between Rails Controller vs Stimulus Controller?
+        - Rails Controller when need to interact with data
+        - Stimulus Controller when need to interact with UI without data like open/close popup, collapse card info, dropdown menu, ...
+      - Benefits of Stimulus?
+    - Apply Turbo Stream
+      - Mechanism for real-time interaction between client-server
+      - Notes
+        - Use real-time only when necessary
+        - There are 2 types of turbo streams
+          - Update via AJAX (tab-specific)
+          - Broadcast to Cable and send updated to client connections (global scope)
+- Upcoming plan
+  - Develop edit & delete contact card
+  - Try to integrate turbo frame on some features if suitable
+  - Develop feature suggest add connection between two users who have saved each other's contact

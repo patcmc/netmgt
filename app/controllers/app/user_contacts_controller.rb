@@ -22,9 +22,9 @@ module App
       respond_to do |format|
         if @user_contact.save
           format.turbo_stream
-          format.html { redirect_to(app_contact_path(@user_contact), notice: "User contact was successfully created.") }
+          format.html { redirect_to(app_contacts_path, notice: "User contact was successfully created.") }
         else
-          format.html { redirect_to(app_contact_path(@user_contact), notice: "User contact was not created.") }
+          format.html { redirect_to(app_contact_path, notice: "User contact was not created.") }
         end
       end
     end
