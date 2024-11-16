@@ -2,27 +2,18 @@
 <html>
   <head>
     <title>NetMgt</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <%= hotwire_livereload_tags if Rails.env.development? %>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <%= csrf_meta_tags %> <%= csp_meta_tag %> <%= stylesheet_link_tag "tailwind", "inter-font",
+    "data-turbo-track": "reload" %> <%= stylesheet_link_tag "application", "data-turbo-track":
+    "reload" %> <%= javascript_importmap_tags %> <%= hotwire_livereload_tags if
+    Rails.env.development? %>
   </head>
 
   <body>
-    <header>
-      <%= render(HeaderComponent.new) %>
-    </header>
+    <header class="sticky top-0"><%= render(HeaderComponent.new) %></header>
 
-    <main>
-      <%= yield %>
-    </main>
+    <main><%= yield %></main>
 
-    <footer>
-      <%= render(FooterComponent.new) %>
-    </footer>
+    <footer><%= render(FooterComponent.new) %></footer>
   </body>
 </html>

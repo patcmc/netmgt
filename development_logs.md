@@ -1,3 +1,8 @@
+---
+markmap:
+  initialExpandLevel: 3
+---
+
 # Development Logs
 
 - Project overview
@@ -27,13 +32,29 @@
         - Domain-Driven Design (DDD) Aggregates
     - Init the core logic
   - Setup Controller-layer & View-layer
-    - Pages
-      - Landing
-      - Application
-        - Unauthenticated
-        - Authenticated
-      - Mailer
+    - Identify the branches
+      - Base
+        - Landing pages
+          - Home
+          - About
+          - Contact
+        - Application pages
+          - Unauthenticated
+            - Login
+            - Register
+          - Authenticated
+            - Admin
+              - Dashboard
+            - User
+              - Author Profile
+              - Buyer Profile
+        - Mailers
+          - Admin
+          - User
+            - Author
+            - Buyer
     - Apply Tailwind + Flowbite
+      - Optimize development time, ensure UI/UX quality
     - Apply ViewComponent
       - Leverage the power of object orientation in programming languages ​
         - Abstraction
