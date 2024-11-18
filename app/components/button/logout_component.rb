@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class Button::LogoutComponent < BaseComponent
+module Button
+  class LogoutComponent < BaseComponent
+  end
 end
