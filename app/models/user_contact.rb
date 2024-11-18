@@ -11,4 +11,8 @@ class UserContact < ApplicationRecord
       target: "user-contacts",
       html: Card::UserContactComponent.new(user_contact: self).render_in(ActionController::Base.new.view_context)
   end
+  after_destroy_commit do
+    broadcast_remove_to "user_contacts_#{user_id}",
+      target: self
+  end
 end
