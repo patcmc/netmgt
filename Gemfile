@@ -63,8 +63,14 @@ group :development do
   gem "erb_lint"
 
   # RuboCop gems for linting and formatting
+  gem "ruby-lsp"
   gem "rubocop", require: false
-  gem "rubocop-shopify", require: false
+  gem "rubocop-packaging"
+  gem "rubocop-performance"
+  gem "rubocop-rspec"
+  gem "rubocop-shopify"
+  gem "rubocop-thread_safety"
+
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
