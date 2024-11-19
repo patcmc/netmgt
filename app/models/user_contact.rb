@@ -11,6 +11,11 @@ class UserContact < ApplicationRecord
       target: "user-contacts",
       html: BaseController.renderer.render(Card::UserContactComponent.new(user_contact: self))
   end
+  after_update_commit do
+    broadcast_replace_to "user_contacts_#{user_id}",
+      target: self,
+      html: BaseController.renderer.render(Card::UserContactComponent.new(user_contact: self))
+  end
   after_destroy_commit do
     broadcast_remove_to "user_contacts_#{user_id}",
       target: self
