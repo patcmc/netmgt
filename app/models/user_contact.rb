@@ -9,7 +9,7 @@ class UserContact < ApplicationRecord
   after_create_commit do
     broadcast_append_to "user_contacts_#{user_id}",
       target: "user-contacts",
-      html: Card::UserContactComponent.new(user_contact: self).render_in(ActionController::Base.new.view_context)
+      html: BaseController.renderer.render(Card::UserContactComponent.new(user_contact: self))
   end
   after_destroy_commit do
     broadcast_remove_to "user_contacts_#{user_id}",
