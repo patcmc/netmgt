@@ -68,6 +68,7 @@ Thumbs.db
 /capybara-*.html
 /coverage/
 /spec/tmp
+/spec/examples.txt
 **.orig
 
 # Ignore other unnecessary files.
