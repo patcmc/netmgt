@@ -8,5 +8,9 @@ FactoryBot.define do
     phone { Faker::PhoneNumber.phone_number }
     address { Faker::Address.full_address }
     tags { Faker::Lorem.words(number: 3) }
+
+    trait :invalid do
+      name { nil }
+    end
   end
 end

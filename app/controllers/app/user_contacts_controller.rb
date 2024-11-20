@@ -32,7 +32,7 @@ module App
       if @user_contact.update(user_contact_params)
         redirect_to(app_contacts_path, notice: "User contact was successfully updated.")
       else
-        render(:edit)
+        redirect_to(app_contacts_path, notice: "User contact was not updated.")
       end
     end
 

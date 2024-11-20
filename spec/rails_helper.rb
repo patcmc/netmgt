@@ -38,6 +38,9 @@ RSpec.configure do |config|
   # Include Capybara DSL for feature specs
   config.include(Capybara::DSL, type: :feature)
 
+  # Include Devise test helpers for controller specs
+  config.include(Devise::Test::ControllerHelpers, type: :controller)
+
   # Fixture path configuration
   config.fixture_paths = [
     Rails.root.join("spec/fixtures"),
