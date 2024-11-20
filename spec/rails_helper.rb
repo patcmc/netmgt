@@ -41,6 +41,9 @@ RSpec.configure do |config|
   # Include Devise test helpers for controller specs
   config.include(Devise::Test::ControllerHelpers, type: :controller)
 
+  # Include ViewComponent test helpers
+  config.include(RSpec::ViewComponent::Context, type: :component)
+
   # Fixture path configuration
   config.fixture_paths = [
     Rails.root.join("spec/fixtures"),

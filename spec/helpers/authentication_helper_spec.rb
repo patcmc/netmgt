@@ -5,35 +5,27 @@ require "rails_helper"
 RSpec.describe(AuthenticationHelper, type: :helper) do
   let(:user) { create(:user) }
 
-  before do
+  around do |example|
     Current.user = user
-  end
-
-  after do
+    example.run
     Current.user = nil
   end
 
   describe "#current_user" do
-    it "returns the current user" do
-      expect(helper.current_user).to(eq(user))
-    end
+    subject { helper.current_user }
+    it { is_expected.to(eq(user)) }
   end
 
   describe "#user_signed_in?" do
+    subject { helper.user_signed_in? }
+
     context "when user is signed in" do
-      it "returns true" do
-        expect(helper.user_signed_in?).to(be(true))
-      end
+      it { is_expected.to(be(true)) }
     end
 
     context "when no user is signed in" do
-      before do
-        Current.user = nil
-      end
-
-      it "returns false" do
-        expect(helper.user_signed_in?).to(be(false))
-      end
+      before { Current.user = nil }
+      it { is_expected.to(be(false)) }
     end
   end
 end
