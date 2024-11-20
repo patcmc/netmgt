@@ -4,20 +4,18 @@
 
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-bold">Contacts</h1>
-    <button
-      data-action="contacts--modal#open"
-      class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded"
-    >
-      Add Contact
-    </button>
+    <%= render(Button::New::UserContactComponent.new) %>
   </div>
 
-  <%= turbo_stream_from "user_contacts_#{Current.user.id}" %>
+  <%= turbo_stream_from "user_contacts_#{current_user.id}" %>
   <div
     id="user-contacts"
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
   >
-    <%= render(Card::UserContactComponent.with_collection(@user_contacts)) %>
+    <% if @user_contacts.any? %> <%=
+    render(Card::UserContactComponent.with_collection(@user_contacts)) %> <% else %>
+    <p class="no-contacts-message">No contacts available.</p>
+    <% end %>
   </div>
 
   <%= render(Modal::UserContactComponent.new(user_contact: @user_contact, url: app_contacts_path))

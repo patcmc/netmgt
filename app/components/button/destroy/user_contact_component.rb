@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Button
-  module Delete
+  module Destroy
     class UserContactComponent < BaseComponent
       def initialize(user_contact:)
         super()
