@@ -3,21 +3,19 @@ inherit_gem:
 
 AllCops:
   Exclude:
-    - ".git/**/*"
-    - "bin/**/*"
-    - "node_modules/**/*"
-    - "coverage/**/*"
-    - "tmp/**/*"
-    - "log/**/*"
-    - "Gemfile"
-    - "config/**/*"
-    - "db/schema.rb"
-    - "vendor/**/*"
-    - "public/**/*"
-    - "spec/fixtures/**/*"
-    - "spec/support/**/*"
-    - "test/fixtures/**/*"
-    - "test/support/**/*"
-    - "*.rake"
-    - "*.lock"
-    - "*.snap"
+    - '.git/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'coverage/**/*'
+    - 'tmp/**/*'
+    - 'log/**/*'
+    - 'Gemfile'
+    - 'config/**/*'
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+    - 'public/**/*'
+    - 'spec/fixtures/**/*'
+    - 'spec/support/**/*'
+    - '*.rake'
+    - '*.lock'
+    - '*.snap'

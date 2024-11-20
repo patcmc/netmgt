@@ -23,6 +23,14 @@ rescue ActiveRecord::PendingMigrationError => e
   abort(e.to_s.strip)
 end
 
+# Configure Shoulda Matchers to use RSpec as the test framework and full matcher libraries for Rails
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework(:rspec)
+    with.library(:rails)
+  end
+end
+
 RSpec.configure do |config|
   # Use FactoryBot shortcuts
   config.include(FactoryBot::Syntax::Methods)
@@ -36,7 +44,7 @@ RSpec.configure do |config|
   ]
 
   # Use transactional fixtures for tests
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # Configure DatabaseCleaner for non-transactional tests
   config.before(:suite) do

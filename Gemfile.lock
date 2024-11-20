@@ -132,6 +132,8 @@ GEM
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
+    faker (3.5.1)
+      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -317,6 +319,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     smart_properties (1.17.0)
     solargraph (0.50.0)
       backport (~> 1.2)
@@ -407,6 +411,7 @@ DEPENDENCIES
   devise
   erb_lint
   factory_bot_rails
+  faker
   hotwire-livereload (~> 1.2)
   importmap-rails
   jbuilder
@@ -421,6 +426,7 @@ DEPENDENCIES
   rubocop-thread_safety
   ruby-lsp
   selenium-webdriver
+  shoulda-matchers
   solargraph
   sprockets-rails
   sqlite3 (~> 1.4)

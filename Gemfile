@@ -89,4 +89,6 @@ group :test do
   gem "webdrivers"
   gem "database_cleaner-active_record"
   gem "factory_bot_rails"
+  gem "shoulda-matchers"
+  gem "faker"
 end
