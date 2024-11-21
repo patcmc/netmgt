@@ -13,7 +13,7 @@ RSpec.describe("app/user_contacts/index.html.erb", type: :view) do
   end
 
   before do
-    allow(view).to(receive(:current_user).and_return(user))
+    allow(Current).to(receive(:user).and_return(user))
     assign(:user_contacts, user_contacts)
     render
   end

@@ -1,9 +1,12 @@
-<div class="container mx-auto p-4 min-h-screen" data-controller="contacts--modal">
+<div class="container mx-auto p-4 min-h-screen">
   <%= breadcrumb %>
 
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-bold">Contacts</h1>
-    <%= render(Button::New::UserContactComponent.new) %>
+    <div  data-controller="contacts--modal">
+      <%= render(Button::New::UserContactComponent.new) %>
+      <%= render(Modal::UserContactComponent.new(user_contact: @user_contact, url: app_contacts_path)) %>
+    </div>
   </div>
 
   <%= turbo_stream_from "user_contacts_#{current_user.id}" %>
@@ -17,6 +20,4 @@
       <p class="no-contacts-message">No contacts available.</p>
     <% end %>
   </div>
-
-  <%= render(Modal::UserContactComponent.new(user_contact: @user_contact, url: app_contacts_path)) %>
 </div>
