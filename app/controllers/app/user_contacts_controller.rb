@@ -20,9 +20,15 @@ module App
       @user_contact = current_user.user_contacts.build(user_contact_params)
 
       if @user_contact.save
-        redirect_to(app_contacts_path, notice: "User contact was successfully created.")
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to(app_contacts_path, notice: "User contact was successfully created.") }
+        end
       else
-        redirect_to(app_contacts_path, notice: "User contact was not created.")
+        respond_to do |format|
+          format.turbo_stream { head(:unprocessable_entity) }
+          format.html { render(:new, status: :unprocessable_entity) }
+        end
       end
     end
 
@@ -30,16 +36,25 @@ module App
 
     def update
       if @user_contact.update(user_contact_params)
-        redirect_to(app_contacts_path, notice: "User contact was successfully updated.")
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to(app_contacts_path, notice: "User contact was successfully updated.") }
+        end
       else
-        redirect_to(app_contacts_path, notice: "User contact was not updated.")
+        respond_to do |format|
+          format.turbo_stream { head(:unprocessable_entity) }
+          format.html { redirect_to(app_contacts_path, notice: "User contact was not updated.") }
+        end
       end
     end
 
     def destroy
       @user_contact.destroy
 
-      redirect_to(app_contacts_path, notice: "User contact was successfully destroyed.")
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to(app_contacts_path, notice: "User contact was successfully destroyed") }
+      end
     end
 
     private
