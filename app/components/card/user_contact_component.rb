@@ -6,5 +6,9 @@ module Card
       super()
       @user_contact = user_contact
     end
+
+    def render?
+      @user_contact.present?
+    end
   end
 end

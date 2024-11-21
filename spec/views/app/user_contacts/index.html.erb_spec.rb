@@ -46,7 +46,6 @@ RSpec.describe("app/user_contacts/index.html.erb", type: :view) do
     let(:user_contacts) { [] }
 
     it "displays a no contacts message" do
-      render
       expect(page).to(have_content("No contacts available."))
     end
   end

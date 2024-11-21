@@ -10,10 +10,8 @@
   </head>
 
   <body>
-    <header class="sticky top-0"><%= render(HeaderComponent.new) %></header>
-
-    <main><%= yield %></main>
-
-    <footer><%= render(FooterComponent.new) %></footer>
+    <%= render(Layout::LandingComponent.new) do %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

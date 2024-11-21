@@ -79,6 +79,7 @@ group :development do
   # gem "spring"
 
   gem "hotwire-livereload", "~> 1.2"
+  gem "pry"
 end
 
 group :test do

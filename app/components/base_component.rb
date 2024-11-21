@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class BaseComponent < ViewComponent::Base
-  include Turbo::FramesHelper, Turbo::Streams::StreamName, Turbo::Streams::Broadcasts
+  # Turbo helpers
+  include Turbo::FramesHelper
+  include Turbo::StreamsHelper
+  include Turbo::Streams::StreamName
+  include Turbo::Streams::Broadcasts
+
+  # Authentication helper
   include AuthenticationHelper
 end

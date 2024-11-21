@@ -10,10 +10,8 @@
   </head>
 
   <body>
-    <header><%= render(HeaderComponent.new) %></header>
-
-    <main><%= yield %></main>
-
-    <footer><%= render(FooterComponent.new) %></footer>
+    <%= render(Layout::AuthenticatedComponent.new) do %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class Button::RegisterComponent < BaseComponent
+module Button
+  class RegisterComponent < BaseComponent
+  end
 end
