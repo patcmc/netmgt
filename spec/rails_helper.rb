@@ -31,12 +31,18 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+# Capybara configuration
+Capybara.register_driver(:chrome) do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+Capybara.configure do |config|
+  config.javascript_driver = :chrome
+  config.default_max_wait_time = 10 # seconds
+end
+
 RSpec.configure do |config|
   # Use FactoryBot shortcuts
   config.include(FactoryBot::Syntax::Methods)
-
-  # Include Capybara DSL for feature specs
-  config.include(Capybara::DSL, type: :feature)
 
   # Include Devise test helpers for controller specs
   config.include(Devise::Test::ControllerHelpers, type: :controller)
@@ -55,8 +61,8 @@ RSpec.configure do |config|
   # Use transactional fixtures for tests
   config.use_transactional_fixtures = false
 
-  # Configure DatabaseCleaner for non-transactional tests
   config.before(:suite) do
+    # Configure DatabaseCleaner for non-transactional tests
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end

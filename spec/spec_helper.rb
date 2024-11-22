@@ -46,14 +46,4 @@ RSpec.configure do |config|
 
   # Seed global randomization to reproduce failures
   Kernel.srand(config.seed)
-
-  # Allow Capybara configuration
-  config.before(:suite) do
-    Capybara.default_driver = :selenium_chrome
-    Capybara.javascript_driver = :selenium_chrome
-    Capybara.default_max_wait_time = 5 # Adjust as needed for slow-loading pages
-  end
-
-  # Additional helpers for Capybara tests
-  config.include(Capybara::DSL, type: :feature)
 end
