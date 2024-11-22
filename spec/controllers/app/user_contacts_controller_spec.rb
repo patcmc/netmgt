@@ -3,14 +3,10 @@
 require "rails_helper"
 
 RSpec.describe(App::UserContactsController, type: :controller) do
-  # Utilize FactoryBot to create necessary test data
   let(:user) { create(:user) }
   let(:user_contact) { create(:user_contact, user: user) }
 
-  # Authenticate the user before each test
-  before do
-    sign_in(user)
-  end
+  before { sign_in(user) }
 
   describe "routing" do
     it { is_expected.to(route(:get, "/app/contacts").to(action: :index)) }
@@ -23,10 +19,9 @@ RSpec.describe(App::UserContactsController, type: :controller) do
     it { is_expected.to(route(:delete, "/app/contacts/1").to(action: :destroy, id: 1)) }
   end
 
-  # Shared examples for actions that should respond successfully
   shared_examples "a successful GET request" do
     it "responds with HTTP success" do
-      get action, params: params
+      get action, params: params, as: :html
       expect(response).to(have_http_status(:success))
     end
   end
@@ -40,7 +35,7 @@ RSpec.describe(App::UserContactsController, type: :controller) do
 
   describe "GET #show" do
     let(:action) { :show }
-    let(:params) { { id: user_contact } }
+    let(:params) { { id: user_contact.id } }
 
     it_behaves_like "a successful GET request"
   end
@@ -54,7 +49,7 @@ RSpec.describe(App::UserContactsController, type: :controller) do
 
   describe "GET #edit" do
     let(:action) { :edit }
-    let(:params) { { id: user_contact } }
+    let(:params) { { id: user_contact.id } }
 
     it_behaves_like "a successful GET request"
   end
@@ -64,30 +59,44 @@ RSpec.describe(App::UserContactsController, type: :controller) do
     let(:invalid_attributes) { attributes_for(:user_contact, :invalid) }
 
     context "with valid params" do
-      it "creates a new UserContact" do
-        expect do
-          post(:create, params: { user_contact: valid_attributes })
-        end.to(change(UserContact, :count).by(1))
-      end
-
-      it "redirects to the created user_contact" do
-        post :create, params: { user_contact: valid_attributes }
+      it "creates a new UserContact and redirects" do
+        expect { post(:create, params: { user_contact: valid_attributes }) }
+          .to(change(UserContact, :count).by(1))
         expect(response).to(redirect_to(app_contacts_path))
         expect(flash[:notice]).to(eq("User contact was successfully created."))
+      end
+
+      it "broadcasts a Turbo Streams message" do
+        expect do
+          post(:create, params: { user_contact: valid_attributes })
+        end.to(have_broadcasted_to("user_contacts_#{user.id}").with) do |data|
+          data[:target] == user_contact
+        end
+      end
+
+      it "renders a successful response with Turbo Streams" do
+        post :create, params: { user_contact: valid_attributes }, as: :turbo_stream
+        expect(response).to(have_http_status(:success))
       end
     end
 
     context "with invalid params" do
-      it "does not create a new UserContact" do
-        expect do
-          post(:create, params: { user_contact: invalid_attributes })
-        end.not_to(change(UserContact, :count))
-      end
-
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: { user_contact: invalid_attributes }
+      it "does not create a new UserContact and redirects" do
+        expect { post(:create, params: { user_contact: invalid_attributes }) }
+          .not_to(change(UserContact, :count))
         expect(response).to(redirect_to(app_contacts_path))
         expect(flash[:notice]).to(eq("User contact was not created."))
+      end
+
+      it "does not broadcast a Turbo Streams message" do
+        expect do
+          post(:create, params: { user_contact: invalid_attributes })
+        end.not_to(have_broadcasted_to("user_contacts_#{user.id}"))
+      end
+
+      it "renders a failure response with Turbo Streams" do
+        post :create, params: { user_contact: invalid_attributes }, as: :turbo_stream
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     end
   end
@@ -96,35 +105,50 @@ RSpec.describe(App::UserContactsController, type: :controller) do
     let(:new_attributes) { attributes_for(:user_contact) }
     let(:invalid_attributes) { attributes_for(:user_contact, :invalid) }
 
+    before { user_contact }
+
     context "with valid params" do
-      it "updates the requested user_contact" do
+      it "updates the user_contact and redirects" do
         put :update, params: { id: user_contact.to_param, user_contact: new_attributes }
         user_contact.reload
-        expect(user_contact.name).to(eq(new_attributes[:name]))
-        expect(user_contact.email).to(eq(new_attributes[:email]))
-        expect(user_contact.phone).to(eq(new_attributes[:phone]))
-        expect(user_contact.address).to(eq(new_attributes[:address]))
-      end
-
-      it "redirects to the user_contact" do
-        put :update, params: { id: user_contact.to_param, user_contact: new_attributes }
+        expect(user_contact).to(have_attributes(new_attributes.except(:tags))) # tags are not updated
         expect(response).to(redirect_to(app_contacts_path))
         expect(flash[:notice]).to(eq("User contact was successfully updated."))
+      end
+
+      it "broadcasts a Turbo Streams message" do
+        expect do
+          put(:update, params: { id: user_contact.to_param, user_contact: new_attributes })
+        end.to(have_broadcasted_to("user_contacts_#{user.id}").with) do |data|
+          data[:target] == user_contact
+        end
+      end
+
+      it "renders a successful response with Turbo Streams" do
+        put :update, params: { id: user_contact.to_param, user_contact: new_attributes }, as: :turbo_stream
+        expect(response).to(have_http_status(:success))
       end
     end
 
     context "with invalid params" do
-      it "does not update the user_contact" do
+      it "does not update the user_contact and redirects" do
         original_attributes = user_contact.attributes
-        put :update, params: { id: user_contact, user_contact: invalid_attributes }
+        put :update, params: { id: user_contact.to_param, user_contact: invalid_attributes }
         user_contact.reload
         expect(user_contact.attributes).to(eq(original_attributes))
-      end
-
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        put :update, params: { id: user_contact.to_param, user_contact: invalid_attributes }
         expect(response).to(redirect_to(app_contacts_path))
         expect(flash[:notice]).to(eq("User contact was not updated."))
+      end
+
+      it "does not broadcast a Turbo Streams message" do
+        expect do
+          put(:update, params: { id: user_contact.to_param, user_contact: invalid_attributes })
+        end.not_to(have_broadcasted_to("user_contacts_#{user.id}"))
+      end
+
+      it "renders a failure response with Turbo Streams" do
+        put :update, params: { id: user_contact.to_param, user_contact: invalid_attributes }, as: :turbo_stream
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     end
   end
@@ -132,15 +156,23 @@ RSpec.describe(App::UserContactsController, type: :controller) do
   describe "DELETE #destroy" do
     before { user_contact }
 
-    it "destroys the requested user_contact" do
-      expect do
-        delete(:destroy, params: { id: user_contact })
-      end.to(change(UserContact, :count).by(-1))
+    it "destroys the user_contact and redirects" do
+      expect { delete(:destroy, params: { id: user_contact }) }
+        .to(change(UserContact, :count).by(-1))
+      expect(response).to(redirect_to(app_contacts_path))
     end
 
-    it "redirects to the contacts list" do
-      delete :destroy, params: { id: user_contact }
-      expect(response).to(redirect_to(app_contacts_path))
+    it "broadcasts a Turbo Streams message" do
+      expect do
+        delete(:destroy, params: { id: user_contact })
+      end.to(have_broadcasted_to("user_contacts_#{user.id}").with) do |data|
+        data[:target] == user_contact
+      end
+    end
+
+    it "renders a successful response with Turbo Streams" do
+      delete :destroy, params: { id: user_contact }, as: :turbo_stream
+      expect(response).to(have_http_status(:success))
     end
   end
 end

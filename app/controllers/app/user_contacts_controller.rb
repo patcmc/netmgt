@@ -27,7 +27,7 @@ module App
       else
         respond_to do |format|
           format.turbo_stream { head(:unprocessable_entity) }
-          format.html { render(:new, status: :unprocessable_entity) }
+          format.html { redirect_to(app_contacts_path, notice: "User contact was not created.") }
         end
       end
     end
