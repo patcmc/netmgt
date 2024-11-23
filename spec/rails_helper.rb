@@ -11,7 +11,6 @@ require "rspec/rails"
 
 # Add additional requires for libraries here (e.g., FactoryBot, ShouldaMatchers)
 require "factory_bot_rails"
-require "database_cleaner/active_record"
 
 # Automatically require files in spec/support and its subdirectories
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
@@ -21,20 +20,6 @@ begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
   abort(e.to_s.strip)
-end
-
-# Configure Shoulda Matchers to use RSpec as the test framework and full matcher libraries for Rails
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework(:rspec)
-    with.library(:rails)
-  end
-end
-
-# Capybara configuration
-Capybara.configure do |config|
-  config.javascript_driver = :selenium_chrome_headless
-  config.default_max_wait_time = 10 # seconds
 end
 
 RSpec.configure do |config|
@@ -57,18 +42,6 @@ RSpec.configure do |config|
 
   # Use transactional fixtures for tests
   config.use_transactional_fixtures = false
-
-  config.before(:suite) do
-    # Configure DatabaseCleaner for non-transactional tests
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
 
   # Infer spec type from file location
   config.infer_spec_type_from_file_location!
