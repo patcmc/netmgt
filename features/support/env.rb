@@ -80,17 +80,4 @@ World(FactoryBot::Syntax::Methods)
 # Additional requires and configurations can be placed here
 # For example, support for custom matchers, macros, etc.
 
-# Hooks to manage DatabaseCleaner around scenarios
-Before do |scenario|
-  # Switch DatabaseCleaner strategy based on scenario tags
-  DatabaseCleaner.strategy = if scenario.tags.map(&:name).include?("@javascript")
-    :truncation
-  else
-    :transaction
-  end
-  DatabaseCleaner.start
-end
-
-After do
-  DatabaseCleaner.clean
-end
+# NOTE: Hooks have been moved to hooks.rb for better organization
