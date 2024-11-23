@@ -66,6 +66,37 @@
       "name": "Cypress: Open GUI",
       "program": "${workspaceFolder}/node_modules/cypress/bin/cypress",
       "args": ["open"]
+    },
+    {
+      "type": "ruby_lsp",
+      "name": "Cypress: Rails Server",
+      "request": "launch",
+      "program": "${workspaceRoot}/bin/rails server -p 5017",
+      "env": {
+        "RAILS_ENV": "test"
+      }
+    },
+    {
+      "name": "Cypress: Test Runner",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/.bin/cypress",
+      "args": [
+        "open",
+        "--project",
+        "${workspaceRoot}/e2e"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
     }
   ],
+  "compounds": [
+    {
+      "name": "Cypress: Rails Server & Test Runner",
+      "configurations": [
+        "Cypress: Rails Server",
+        "Cypress: Test Runner"
+      ]
+    }
+  ]
 }
