@@ -470,7 +470,6 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   stimulus-rails
   tailwindcss-rails
-  tailwindcss-ruby (= 3.4.13)
   turbo-rails
   tzinfo-data
   view_component
