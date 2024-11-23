@@ -28,5 +28,23 @@
         "RAILS_ENV": "test"
       }
     },
+    {
+      "type": "ruby_lsp",
+      "name": "Cucumber: Run Current Feature File",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/cucumber ${file}",
+      "env": {
+        "RAILS_ENV": "test"
+      }
+    },
+    {
+      "type": "ruby_lsp",
+      "name": "Cucumber: Run All Features",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/cucumber",
+      "env": {
+        "RAILS_ENV": "test"
+      }
+    },
   ],
 }
