@@ -132,6 +132,8 @@ GEM
       cucumber (>= 5, < 10)
       railties (>= 5.2, < 8)
     cucumber-tag-expressions (6.1.1)
+    cypress-on-rails (1.17.0)
+      rack
     database_cleaner-active_record (2.2.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
@@ -443,6 +445,7 @@ DEPENDENCIES
   bootsnap
   capybara
   cucumber-rails
+  cypress-on-rails
   database_cleaner-active_record
   debug
   devise

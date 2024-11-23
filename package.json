@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "flowbite": "^2.5.2"
+  },
+  "devDependencies": {
+    "cypress": "^13.16.0",
+    "cypress-on-rails": "^0.1.0"
   }
 }

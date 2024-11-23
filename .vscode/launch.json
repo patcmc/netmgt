@@ -46,5 +46,26 @@
         "RAILS_ENV": "test"
       }
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Cypress: Run Current Spec File",
+      "program": "${workspaceFolder}/node_modules/cypress/bin/cypress",
+      "args": ["run", "--spec", "${file}"]
+    },
+    {
+      "type": "node",
+      "name": "Cypress: Run All Tests",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/cypress/bin/cypress",
+      "args": ["run"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Cypress: Open GUI",
+      "program": "${workspaceFolder}/node_modules/cypress/bin/cypress",
+      "args": ["open"]
+    }
   ],
 }
