@@ -3,7 +3,10 @@
 require "rails_helper"
 
 RSpec.feature("User Login", type: :feature) do
-  let(:user) { create(:user, email: "user@example.com", password: "password") }
+  fixtures :users
+
+  let(:user) { users(:john_doe) }
+  let(:password) { TestConstants::USER_PASSWORD }
 
   scenario "User logs in with valid credentials" do
     login_as(user)

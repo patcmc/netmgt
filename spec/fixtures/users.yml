@@ -1,0 +1,10 @@
+defaults: &defaults
+  encrypted_password: <%= User.new.send(:password_digest, TestConstants::USER_PASSWORD) %>
+
+john_doe:
+  <<: *defaults
+  email: john.doe@example.com
+
+jane_doe:
+  <<: *defaults
+  email: jane.doe@example.com

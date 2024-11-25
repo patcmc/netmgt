@@ -3,7 +3,9 @@
 require "rails_helper"
 
 RSpec.describe(AuthenticationHelper, type: :helper) do
-  let(:user) { create(:user) }
+  fixtures :users
+
+  let(:user) { users(:john_doe) }
 
   around do |example|
     Current.user = user
