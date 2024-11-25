@@ -6,7 +6,8 @@
     "*.erb": "erb",
     "*.html.erb": "html",
     "*.turbo_stream.erb": "html",
-    "*.rb": "ruby"
+    "*.rb": "ruby",
+    "*.js": "javascript",
   },
 
   // HTML and ERB settings
@@ -29,6 +30,10 @@
     "editor.defaultFormatter": "Shopify.ruby-lsp", 
     "editor.formatOnSave": true
   },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
 
   "rubyLsp.enabledFeatures": {
     "codeActions": true,
@@ -46,5 +51,12 @@
     "completion": true,
     "codeLens": true
   },
-  "rubyLsp.formatter": "rubocop"
+  "rubyLsp.formatter": "rubocop",
+
+  // Prettier configuration for JavaScript
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.arrowParens": "always",
+  "prettier.printWidth": 80,
 }
