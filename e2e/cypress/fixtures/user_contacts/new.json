@@ -1,0 +1,14 @@
+{
+  "valid": {
+    "name": "Lionel Messi",
+    "email": "messi@example.com",
+    "phone": "1234567890",
+    "tags": "friend"
+  },
+  "invalid": {
+    "name": "Cristiano Ronaldo",
+    "email": "@@",
+    "phone": "123",
+    "tags": "friend"
+  }
+}

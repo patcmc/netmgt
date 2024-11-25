@@ -8,11 +8,22 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 //
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
+Cypress.Commands.add('login', (email, password) => {
+  cy.visit('/users/sign_in')
+
+  cy.request({
+    method: 'POST',
+    url: '/users/sign_in',
+    form: true,
+    body: {
+      user: {
+        email,
+        password,
+      },
+    },
+  })
+})
+
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
 //

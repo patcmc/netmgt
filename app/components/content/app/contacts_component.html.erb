@@ -14,10 +14,6 @@
     id="user-contacts"
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
   >
-    <% if @user_contacts.any? %>
-      <%= render(Card::UserContactComponent.with_collection(@user_contacts)) %>
-    <% else %>
-      <p class="no-contacts-message">No contacts available.</p>
-    <% end %>
+    <%= render(Card::UserContactComponent.with_collection(@user_contacts)) %>
   </div>
 </div>
