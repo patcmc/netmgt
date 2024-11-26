@@ -1,6 +1,5 @@
 describe('Add Contact', () => {
   before(() => {
-    // Reset the application and seed the database
     cy.app('clean')
 
     cy.fixture('users/list.json').then((users) => {
@@ -25,8 +24,7 @@ describe('Add Contact', () => {
       cy.get('input[name="user_contact[email]"]').type(contact.valid.email)
       cy.get('input[name="user_contact[phone]"]').type(contact.valid.phone)
       cy.get('select[name="user_contact[tags]"]').select(contact.valid.tags)
-
-      cy.get('input[name="commit"]').should('be.enabled').click()
+      cy.get('form').submit()
 
       cy.get('[data-cy="add-contact-modal"]').should('not.be.visible')
 
