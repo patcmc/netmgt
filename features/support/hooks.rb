@@ -1,21 +1,8 @@
 # frozen_string_literal: true
 
-# Hooks for managing test setup and teardown processes
-
 # Start DatabaseCleaner before each scenario
-Before do |scenario|
-  # Determine the appropriate DatabaseCleaner strategy based on scenario tags
-  DatabaseCleaner.strategy =
-    if scenario.tags.map(&:name).include?("@javascript")
-      :truncation
-    else
-      :transaction
-    end
-  DatabaseCleaner.start
-end
-
-# Clean the database after each scenario
-After do
+Before do |_scenario|
+  DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean
 end
 
